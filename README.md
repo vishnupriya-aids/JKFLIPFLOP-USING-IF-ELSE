@@ -33,6 +33,15 @@ By using three variable K-Map, we can get the simplified expression for next sta
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=JQ(t)′+K′Q(t)Q(t+1)=JQ(t)′+K′Q(t)
 
 **Procedure**
+1.Type the program in Quartus software.
+
+2.Compile and run the program.
+
+3.Generate the RTL schematic and save the logic diagram.
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+5.For different input combinations generate the timing diagram.
 
 
 
@@ -41,44 +50,32 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 /* Program for flipflops and verify its truth table in quartus using Verilog programming.
 Developed by:vishnupriya E
 RegisterNumber:212225230308
-*/
-module JK(q, qb,j,k,clock,reset);
-    input j,k,clock,reset;
-    output reg q, qb;
-	 
-always @ (posedge (clock))
+```
+module exp7(j,k,clk,q,qbar);
+input j,k,clk;
+output reg q,qbar;
+initial 
+begin
+q=1'b0;
+q=1'b1;
+end 
 
-    begin 
-        if (!reset)
-            begin
-               q <= q;
-               qb <=qb;
-            end   
-        
-else
-	begin
-		if(j==0&&k==0)
-			begin
-			q<=q;
-			qb<=qb;
-			end
-		else if(j!=k)
-			begin
-			q<=j;
-			qb<=k;
-			end
-		else if(j==1&&k==1)
-			begin
-			q<=~q;
-			qb<=~qb;
-			end
-	end
-end      
+always @(posedge clk)
+begin 
+q<=(j&~q)|(~k&q);
+qbar<=~q;
+end
 endmodule
+```
+
 **RTL LOGIC FOR FLIPFLOPS**
-"E:\Screenshots\Screenshot 2026-03-16 114219.png"
+
+<img width="846" height="381" alt="Screenshot 2026-03-17 092118" src="https://github.com/user-attachments/assets/e77eb384-1816-4d85-bf07-f3e03cdf6bfc" />
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
-"E:\Screenshots\Screenshot 2026-03-16 114234.png"
+
+<img width="831" height="333" alt="Screenshot 2026-03-17 092131" src="https://github.com/user-attachments/assets/6ee784ac-830c-4481-bc45-b38591ce52c0" />
+
 **RESULTS**
  Implementation of JK flipflop using verilog and validating their functionality using their functional tables is executed and the output is verified successfully.
 
