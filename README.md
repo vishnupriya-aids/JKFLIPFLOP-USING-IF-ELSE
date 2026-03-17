@@ -34,7 +34,7 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+
 
 **PROGRAM**
 
